@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Definindo o charset e o título da página -->
+    <meta charset="UTF-8" />
+    <title>Cadastrar Item</title>
+    <style>
+      /* Estilos gerais para o body */
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #fff0f5; /* Cor de fundo suave */
+        color: #333; /* Cor do texto */
+        padding: 40px;
+        text-align: center;
+      }
+
+      /* Estilo do título principal */
+      h1 {
+        color: #e91e63; /* Cor do título */
+        font-size: 2.5em;
+        margin-bottom: 30px;
+      }
+
+      /* Estilos para o formulário */
+      form {
+        background: #fff; /* Cor de fundo do formulário */
+        padding: 30px;
+        border-radius: 20px; /* Bordas arredondadas */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        max-width: 400px;
+        margin: 0 auto 20px;
+        text-align: left;
+      }
+
+      /* Estilos para os parágrafos do formulário */
+      form p {
+        margin-bottom: 20px;
+      }
+
+      /* Estilo dos labels */
+      label {
+        font-weight: 500;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      /* Estilos para os campos de input, textarea e select */
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px; /* Bordas arredondadas */
+        border: 1px solid #ddd;
+        font-size: 1em;
+      }
+
+      /* Estilo do botão de submit */
+      button {
+        background-color: #f06292; /* Cor de fundo do botão */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 25px; /* Bordas arredondadas */
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+
+      /* Efeito hover no botão de submit */
+      button:hover {
+        background-color: #e91e63;
+      }
+
+      /* Estilo do link para voltar à lista de itens */
+      a {
+        display: inline-block;
+        margin-top: 15px;
+        color: #e91e63;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      /* Efeito hover no link */
+      a:hover {
+        color: #ad1457;
+      }
+    </style>
+    <!-- Link para importar a fonte 'Poppins' -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Título da página -->
+    <h1>Cadastrar Item</h1>
+
+    <!-- Formulário de cadastro do item -->
+    <form method="post">
+      <!-- Token CSRF para proteger contra ataques -->
+      {% csrf_token %}
+      <!-- Renderiza o formulário com os campos -->
+      {{ form.as_p }}
+      <!-- Botão de submit para salvar o item -->
+      <button type="submit">Salvar</button>
+    </form>
+
+    <!-- Link para voltar para a lista de itens -->
+    <a href="/">← Ver lista de itens</a>
+  </body>
+</html>

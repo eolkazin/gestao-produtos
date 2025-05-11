@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Definindo o charset e o título da página -->
+    <meta charset="UTF-8" />
+    <title>Itens Cadastrados</title>
+    <style>
+      /* Estilos gerais para o body */
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #fdf6f9; /* Cor de fundo clara */
+        color: #333; /* Cor do texto */
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Estilo do título principal */
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #e91e63; /* Cor do título */
+      }
+
+      /* Estilo dos links */
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      /* Estilo do link de cadastrar */
+      a[href="/cadastrar/"] {
+        background: #e91e63; /* Cor de fundo do botão */
+        padding: 10px 20px;
+        border-radius: 25px; /* Bordas arredondadas */
+        font-size: 1em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+
+      /* Efeito hover no link de cadastrar */
+      a[href="/cadastrar/"]:hover {
+        background: #d81b60;
+      }
+
+      /* Estilo dos cards para cada item */
+      .card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 300px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      /* Estilo do título dentro do card */
+      .card h2 {
+        margin-top: 0;
+        color: #ec407a;
+      }
+
+      /* Estilo dos parágrafos dentro do card */
+      .card p {
+        margin: 5px 0;
+      }
+
+      /* Estilo dos botões de deletar */
+      button {
+        background: #f06292; /* Cor de fundo do botão */
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 20px; /* Bordas arredondadas */
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      /* Efeito hover no botão de deletar */
+      button:hover {
+        background: #e91e63;
+      }
+
+      /* Estilo para a mensagem caso não haja itens */
+      .empty-msg {
+        color: #999;
+        font-style: italic;
+        margin-top: 40px;
+      }
+    </style>
+    <!-- Link para importar a fonte 'Poppins' -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Itens Cadastrados</h1>
+
+    <!-- Link para cadastrar novo item -->
+    <a href="{% url 'cadastrar' %}">Cadastrar novo item</a>
+
+    <!-- Loop para exibir os itens cadastrados -->
+    {% for item in itens %}
+    <div class="card">
+      <h2>{{ item.nome }}</h2>
+      <p><strong>Preço:</strong> {{ item.preco }}</p>
+      <p><strong>Descrição:</strong> {{ item.descricao }}</p>
+
+      <!-- Link para deletar o item, com confirmação antes de executar -->
+      <a
+        href="{% url 'deletar_item' item.id %}"
+        onclick="return confirm('Tem certeza que quer deletar?')"
+      >
+        <button>Deletar</button>
+      </a>
+    </div>
+    {% empty %}
+    <!-- Mensagem caso não haja itens cadastrados -->
+    <p class="empty-msg">Nenhum item cadastrado ainda.</p>
+    {% endfor %}
+  </body>
+</html>
