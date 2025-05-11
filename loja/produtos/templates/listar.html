@@ -105,20 +105,11 @@
     {% for item in itens %}
     <div class="card">
       <h2>{{ item.nome }}</h2>
-      <p><strong>Preço:</strong> {{ item.preco }}</p>
-      <p><strong>Descrição:</strong> {{ item.descricao }}</p>
-
-      <!-- Link para deletar o item, com confirmação antes de executar -->
-      <a
-        href="{% url 'deletar_item' item.id %}"
-        onclick="return confirm('Tem certeza que quer deletar?')"
-      >
-        <button>Deletar</button>
-      </a>
+      <p><strong>Preço:</strong> R$ {{ item.preco }}</p>
+      <p>{{ item.descricao }}</p>
+      <img src="{{ item.imagem.url }}" width="200" alt="Imagem do item" />
+      <a href="{% url 'deletar_item' item.id %}"><button>Deletar</button></a>
     </div>
-    {% empty %}
-    <!-- Mensagem caso não haja itens cadastrados -->
-    <p class="empty-msg">Nenhum item cadastrado ainda.</p>
     {% endfor %}
   </body>
 </html>

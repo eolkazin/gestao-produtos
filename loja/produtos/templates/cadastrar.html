@@ -98,13 +98,8 @@
     <!-- Título da página -->
     <h1>Cadastrar Item</h1>
 
-    <!-- Formulário de cadastro do item -->
-    <form method="post">
-      <!-- Token CSRF para proteger contra ataques -->
-      {% csrf_token %}
-      <!-- Renderiza o formulário com os campos -->
-      {{ form.as_p }}
-      <!-- Botão de submit para salvar o item -->
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
       <button type="submit">Salvar</button>
     </form>
 

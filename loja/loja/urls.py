@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from produtos import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # Rota para o painel de administração do Django
@@ -15,3 +17,7 @@ urlpatterns = [
     # Rota para deletar um item específico, passando o 'id' do item na URL
     path('deletar/<int:id>/', views.deletar_item, name='deletar_item'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,18 @@
 from django import forms
 from .models import Item
 
-# Formulário para o modelo Item
 class ItemForm(forms.ModelForm):
     class Meta:
-        model = Item  # Especifica que o formulário está baseado no modelo 'Item'
-        fields = ['nome', 'preco', 'descricao']  # Define quais campos do modelo serão exibidos no formulário
+        model = Item
+        fields = ['nome', 'preco', 'descricao', 'imagem']
+
+def clean_imagem(self):
+    imagem = self.cleaned_data.get('imagem')
+
+    # Primeiro 'if': Checa se a imagem existe
+    if imagem:
+        # Segundo 'if': Se a imagem existe, checa se o tamanho é maior que 2MB
+        if imagem.size > 2 * 1024 * 1024:  # 2MB
+            raise forms.ValidationError("Imagem muito grande! Máx: 2MB.")
+    
+    return imagem
