@@ -15,6 +15,7 @@
 - Cadastro de produtos (nome, preço, descrição).
 - Listagem dos produtos cadastrados.
 - Exclusão com confirmação para evitar erros.
+- Listagem dos produtos cadastrados, com suas imagens.
 - Design limpo e responsivo.
 
 ---
