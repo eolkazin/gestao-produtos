@@ -102,14 +102,21 @@
     <a href="{% url 'cadastrar' %}">Cadastrar novo item</a>
 
     <!-- Loop para exibir os itens cadastrados -->
-    {% for item in itens %}
-    <div class="card">
-      <h2>{{ item.nome }}</h2>
-      <p><strong>Preço:</strong> R$ {{ item.preco }}</p>
-      <p>{{ item.descricao }}</p>
-      <img src="{{ item.imagem.url }}" width="200" alt="Imagem do item" />
-      <a href="{% url 'deletar_item' item.id %}"><button>Deletar</button></a>
-    </div>
-    {% endfor %}
-  </body>
+     {% for item in itens %}
+     <div class="card">
+     <h2>{{ item.nome }}</h2>
+     <p><strong>Preço:</strong> R$ {{ item.preco }}</p>
+     <p><strong>Codigo:</strong> {{ item.codigo_produto }}</p>
+     <p><strong>Descrição:</strong> {{ item.descricao }}</p>
+
+     {% if item.imagem %}
+     <img src="{{ item.imagem.url }}" width="200" alt="Imagem do item" />
+     {% else %}
+     <p><em>Sem imagem</em></p>
+     {% endif %}
+
+     <a href="{% url 'deletar_item' item.id %}"><button>Deletar</button></a>
+     </div>
+     {% endfor %}
+
 </html>

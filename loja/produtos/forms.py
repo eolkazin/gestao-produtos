@@ -4,7 +4,8 @@ from .models import Item
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['nome', 'preco', 'descricao', 'imagem']
+        fields = ['nome', 'preco','codigo_produto' ,'descricao', 'imagem']
+
 
 def clean_imagem(self):
     imagem = self.cleaned_data.get('imagem')

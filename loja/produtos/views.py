@@ -4,7 +4,7 @@ from .forms import ItemForm
 
 def cadastrar_item(request):
     if request.method == 'POST':
-        form = ItemForm(request.POST, request.FILES)  # recebe arquivo aqui
+        form = ItemForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('listar_itens')
