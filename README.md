@@ -33,7 +33,6 @@
 
 - **Django**: Para gerenciar o backend.
 - **SQLite**: Banco de dados local.
-- **Jinja**: Template engine para rendering HTML dinâmico.
 
 ---
 
